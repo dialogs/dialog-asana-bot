@@ -2,7 +2,6 @@ buildscript {
     ext.kotlin_version = '1.3.0-rc-190'
 
     repositories {
-        mavenLocal()
         mavenCentral()
         maven {
             url 'https://dl.bintray.com/kotlin/kotlin-eap'
@@ -47,6 +46,9 @@ repositories {
         url "http://dialog.bintray.com/maven"
     }
     maven {
+        url "https://jitpack.io"
+    }
+    maven {
         url 'http://dl.bintray.com/kotlin/kotlin-eap'
     }
 }
@@ -55,6 +57,7 @@ dependencies {
     compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.0-RC1"
     compile "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.0.0-RC1"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    compile group: 'im.dlg', name: 'bot-sdk', version: '1.0-SNAPSHOT'
+    compile group: 'im.dlg', name: 'api-schema', version: '0.0.6', { exclude group: 'io.grpc' }
+    compile group: 'com.github.dialogs', name: 'java-bot-sdk', version: '33d09ae'
     compile group: 'com.asana', name: 'asana', version: '0.8.1'
 }
