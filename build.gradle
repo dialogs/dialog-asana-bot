@@ -1,0 +1,60 @@
+buildscript {
+    ext.kotlin_version = '1.3.0-rc-190'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven {
+            url 'https://dl.bintray.com/kotlin/kotlin-eap'
+        }
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.3.0-rc-190'
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+group 'com.terorie'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'com.terorie.asanabot.MainKt'
+
+compileJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url "http://dialog.bintray.com/maven"
+    }
+    maven {
+        url 'http://dl.bintray.com/kotlin/kotlin-eap'
+    }
+}
+
+dependencies {
+    compile "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.0-RC1"
+    compile "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.0.0-RC1"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compile group: 'im.dlg', name: 'bot-sdk', version: '1.0-SNAPSHOT'
+    compile group: 'com.asana', name: 'asana', version: '0.8.1'
+}
