@@ -13,10 +13,10 @@ object Asana {
     val projects: List<Project>
 
     init {
-        client = Client.accessToken(ASANA_PERSONAL_TOKEN)
-        projects = client.projects.findByTeam(ASANA_TEAM_ID).execute()
-            ?: throw IllegalArgumentException("no such team: $ASANA_TEAM_ID")
-        val path = String.format("/teams/%s/users", ASANA_TEAM_ID)
+        client = Client.accessToken(Config.ASANA_PERSONAL_TOKEN)
+        projects = client.projects.findByTeam(Config.ASANA_TEAM_ID).execute()
+            ?: throw IllegalArgumentException("no such team: ${Config.ASANA_TEAM_ID}")
+        val path = "/teams/${Config.ASANA_TEAM_ID}/users"
         members = CollectionRequest(client.teams, User::class.java, path, "GET").execute()
     }
 

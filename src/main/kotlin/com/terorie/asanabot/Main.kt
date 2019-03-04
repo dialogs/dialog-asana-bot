@@ -17,7 +17,7 @@ fun main() {
 
 object Controller {
     private val convos = HashMap<String, Conversation>()
-    val bot = Bot.start(BOT_TOKEN).get()
+    val bot = Bot.start(Config.BOT_TOKEN).get()
 
     fun run() {
         bot.messaging().onMessage { message ->
